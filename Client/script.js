@@ -74,7 +74,7 @@ function changeColors(color) {
 
 function pickColor() {
     var random = Math.floor(Math.random() * colors.length);
-   return colors[random];
+   return colors [random];
 }
 
 function generateRandomColors(num) {
