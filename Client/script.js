@@ -8,6 +8,7 @@ var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
 var modeButtons = document.querySelectorAll(".mode");
 
+
 init();
 
 function init() {
@@ -15,6 +16,11 @@ function init() {
     setupSquares();
     reset();
 }
+var sound = new Howl({
+    src: ['./views/sounds/bubbles.mp3']
+  });
+  
+ 
 
 function setupModeButtons() {
     for (var i = 0; i < modeButtons.length; i++) {
@@ -24,9 +30,11 @@ function setupModeButtons() {
             this.classList.add("selected");
             this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
             reset();
+        
         });
     }
 }
+
 
 function setupSquares() {
     for (var i = 0; i < squares.length; i++) {
@@ -37,6 +45,7 @@ function setupSquares() {
                 resetButton.textContent = "Play Again?"
                 changeColors(clickedColor);
                 h1.style.background = clickedColor;
+                sound.play();
             } else {
                 this.style.background = "#232323";
                 messageDisplay.textContent = "Try Again"
@@ -64,6 +73,8 @@ function reset() {
 
 resetButton.addEventListener("click", function () {
     reset();
+    
+    
 })
 
 function changeColors(color) {
@@ -75,6 +86,7 @@ function changeColors(color) {
 function pickColor() {
     var random = Math.floor(Math.random() * colors.length);
    return colors [random];
+
 }
 
 function generateRandomColors(num) {
