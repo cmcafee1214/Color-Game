@@ -18,8 +18,11 @@ function init() {
 }
 var sound = new Howl({
     src: ['./views/sounds/bubbles.mp3']
-  });
   
+  });
+  var sound2 = new Howl({
+    src: ['./views/sounds/strike.mp3']
+});
  
 
 function setupModeButtons() {
@@ -44,11 +47,13 @@ function setupSquares() {
                 messageDisplay.textContent = "Correct!";
                 resetButton.textContent = "Play Again?"
                 changeColors(clickedColor);
+                
                 h1.style.background = clickedColor;
                 sound.play();
             } else {
                 this.style.background = "#232323";
                 messageDisplay.textContent = "Try Again"
+                sound2.play();
             }
         });
     }
