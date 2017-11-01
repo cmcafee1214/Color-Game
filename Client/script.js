@@ -23,7 +23,11 @@ var sound = new Howl({
   var sound2 = new Howl({
     src: ['./views/sounds/strike.mp3']
 });
- 
+
+var sound3= new Howl({
+    src: ['./views/sounds/zig-zag.mp3']
+});
+
 
 function setupModeButtons() {
     for (var i = 0; i < modeButtons.length; i++) {
@@ -47,9 +51,10 @@ function setupSquares() {
                 messageDisplay.textContent = "Correct!";
                 resetButton.textContent = "Play Again?"
                 changeColors(clickedColor);
-                
                 h1.style.background = clickedColor;
-                sound.play();
+                sound.play(); 
+                
+                
             } else {
                 this.style.background = "#232323";
                 messageDisplay.textContent = "Try Again"
@@ -71,13 +76,14 @@ function reset() {
             squares[i].style.background = colors[i];
         } else {
             squares[i].style.display = "none";
+           
         }
     }
     h1.style.background = "steelblue";
 }
 
 resetButton.addEventListener("click", function () {
-    reset();
+    reset(); sound3.play();
     
     
 })
